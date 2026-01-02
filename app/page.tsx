@@ -70,11 +70,14 @@ export default function Home() {
     <>
       <HomepageNavBar />
 
-      <div className="min-h-screen flex items-center justify-center bg-[#E8E2D5] overflow-x-hidden w-full">
-        <div className="w-full h-full flex flex-col items-center justify-center max-w-8xl px-6 py-6 pt-[500px] rotate-15 overflow-x-hidden">
-          <div className="w-full flex flex-row justify-between items-start overflow-x-hidden">
-            <span className="w-[32px] h-[150vh] bg-black"></span>
-            <div className="w-full h-full flex flex-col items-center justify-center gap-8 overflow-x-hidden px-10">
+      <div className="flex items-center justify-center bg-[#E8E2D5] w-full">
+        <div className="w-full flex flex-col max-w-8xl px-6 py-6 pt-[440px] rotate-15 ml-[-30%] gap-8">
+           <div className="w-full flex flex-row justify-between items-start overflow-visible relative">
+            <div className="flex flex-col items-center justify-center gap-8">
+              <span className="w-[32px] h-[100vh] bg-black"></span>
+              <span className="w-[47px] h-[47px] rounded-full bg-black"></span>
+            </div>
+            <div className="w-full h-full flex flex-col items-center justify-center gap-8  px-10">
               <Image
                 src={`https:${images?.image1?.fields?.file?.url}`}
                 alt="Homepage Image 1"
@@ -92,8 +95,40 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-center justify-center gap-8">
               <span className="w-[32px] h-[100vh] bg-black"></span>
+              <span className="w-[47px] h-[47px] rounded-full bg-black "></span>
+            </div>
+            <div className="flex flex-row items-center justify-center gap-8 absolute right-[-52vw] bottom-0">
+              <span className="w-[47px] h-[47px] rounded-full bg-black "></span>
+              <span className="w-[50vw] h-[32px] bg-black"></span>
+            </div>
+          </div>
+          <div className="w-full flex flex-row justify-between items-start ml-[30%]">
+            <span className="w-[32px] h-[150vh] bg-black"></span>
+            <div className="w-full h-full flex flex-col items-center justify-center gap-8  px-10">
+              <Image
+                src={`https:${images?.image3?.fields?.file?.url}`}
+                alt="Homepage Image 3"
+                width={1000}
+                height={1000}
+                className="w-full h-auto"
+              />
+              <Image
+                src={`https:${images?.image4?.fields?.file?.url}`}
+                alt="Homepage Image 4"
+                width={1000}
+                height={1000}
+                className="w-full h-auto"
+              />
+            </div>
+            <div className="flex flex-col items-center justify-center gap-8">
+              <span className="w-[32px] h-[100vh] bg-black"></span>
               <span className="w-[47px] h-[47px] rounded-full bg-black"></span>
             </div>
+          </div>
+          
+          {/* Copyright */}
+          <div className="w-full text-end py-12 items-end justify-end">
+            <p className="text-3xl font-bold font-[family-name:var(--font-kay-pho-du)]">Copyright © John Packer 2026</p>
           </div>
         </div>
       </div>
