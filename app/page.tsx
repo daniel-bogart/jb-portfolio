@@ -70,30 +70,126 @@ export default function Home() {
     <>
       <HomepageNavBar />
 
-      <div className="min-h-screen flex items-center justify-center bg-[#E8E2D5] overflow-x-hidden w-full">
-        <div className="w-full h-full flex flex-col items-center justify-center max-w-8xl px-6 py-6 pt-[500px] rotate-15 overflow-x-hidden">
-          <div className="w-full flex flex-row justify-between items-start overflow-x-hidden">
+      <div className="flex items-center justify-center bg-[#E8E2D5] w-full">
+        <div className="w-full flex flex-col max-w-8xl px-6 py-6 pt-[440px] rotate-15 ml-[-30%] gap-8">
+          <div className="w-full flex flex-row justify-between items-start overflow-visible relative">
+            <div className="flex flex-col items-center justify-center gap-8">
+              <span className="w-[32px] h-[100vh] bg-black"></span>
+              <span className="w-[47px] h-[47px] rounded-full bg-black"></span>
+            </div>
+            <div className="w-full h-full flex flex-col items-center justify-center gap-8  px-10">
+              <Link 
+                href={String((images?.image1 as Asset)?.fields?.description || '/film')}
+                className="relative group w-full overflow-hidden block"
+              >
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500 ease-in-out z-10" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-600 ease-in-out z-20">
+                  <h3 className="text-white text-4xl font-bold text-center px-8 font-[family-name:var(--font-kay-pho-du)]">
+                    {String((images?.image1 as Asset)?.fields?.title || '')}
+                  </h3>
+                </div>
+                <Image
+                  src={`https:${(images?.image1 as Asset)?.fields?.file?.url}`}
+                  alt="Homepage Image 1"
+                  width={1000}
+                  height={1000}
+                  className="w-full h-auto transition-transform duration-500 ease-in-out scale-[1.025] group-hover:scale-100"
+                />
+              </Link>
+              <Link 
+                href={String((images?.image2 as Asset)?.fields?.description || '/film')}
+                className="relative group w-full overflow-hidden block"
+              >
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500 ease-in-out z-10" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-600 ease-in-out z-20">
+                  <h3 className="text-white text-4xl font-bold text-center px-8 font-[family-name:var(--font-kay-pho-du)]">
+                    {String((images?.image2 as Asset)?.fields?.title || '')}
+                  </h3>
+                </div>
+                <Image
+                  src={`https:${(images?.image2 as Asset)?.fields?.file?.url}`}
+                  alt="Homepage Image 2"
+                  width={1000}
+                  height={1000}
+                  className="w-full h-auto transition-transform duration-500 ease-in-out scale-[1.025] group-hover:scale-100"
+                />
+              </Link>
+            </div>
+            <div className="flex flex-col items-center justify-center gap-8">
+              <span className="w-[32px] h-[100vh] bg-black"></span>
+              <span className="w-[47px] h-[47px] rounded-full bg-black "></span>
+            </div>
+            <div className="flex flex-row items-center justify-center gap-8 absolute right-[-52vw] bottom-0">
+              <span className="w-[47px] h-[47px] rounded-full bg-black "></span>
+              <span className="w-[50vw] h-[32px] bg-black"></span>
+            </div>
+          </div>
+          <div className="w-[130vw] flex flex-row justify-between items-start ml-[30%]">
             <span className="w-[32px] h-[150vh] bg-black"></span>
-            <div className="w-full h-full flex flex-col items-center justify-center gap-8 overflow-x-hidden px-10">
-              <Image
-                src={`https:${images?.image1?.fields?.file?.url}`}
-                alt="Homepage Image 1"
-                width={1000}
-                height={1000}
-                className="w-full h-auto"
-              />
-              <Image
-                src={`https:${images?.image2?.fields?.file?.url}`}
-                alt="Homepage Image 2"
-                width={1000}
-                height={1000}
-                className="w-full h-auto"
-              />
+            <div className="w-full h-full grid grid-cols-3 gap-8 px-10">
+              <Link 
+                href={String((images?.image3 as Asset)?.fields?.description || '/film')}
+                className="relative group col-span-2 overflow-hidden block"
+              >
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500 ease-in-out z-10" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-600 ease-in-out z-20">
+                  <h3 className="text-white text-4xl font-bold text-center px-8 font-[family-name:var(--font-kay-pho-du)]">
+                    {String((images?.image3 as Asset)?.fields?.title || '')}
+                  </h3>
+                </div>
+                <Image
+                  src={`https:${(images?.image3 as Asset)?.fields?.file?.url}`}
+                  alt="Homepage Image 3"
+                  width={1000}
+                  height={1000}
+                  className="w-full h-auto transition-transform duration-500 ease-in-out scale-[1.025] group-hover:scale-100"
+                />
+              </Link>
+              <div className="flex items-center justify-center bg-black row-span-2 p-6">
+                <div className="-rotate-90 w-[calc(100vh*1.2)] text-center flex flex-col items-center justify-center ml-[-50%] gap-8">
+                  <p className="text-white mb-4 w-[calc(100vh*1.2)] text-center text-xl font-normal font-[family-name:var(--font-days-one)]">
+                    [03] With work that emphasizes leaning into highly stylized
+                    and aesthetic based film. As well as obsessing over the idea
+                    of cohesiveness between each and every aspect of production.
+                    From both shot to shot and department to department.
+                  </p>
+                  <p className="text-white w-[calc(100vh*1.2)] text-center text-xl font-normal font-[family-name:var(--font-days-one)]">
+                    Creating a living, breathing, and tangible world that can
+                    further accentuate the emotions of our own is always the end
+                    goal.
+                  </p>
+                </div>
+              </div>
+              <Link 
+                href={String((images?.image4 as Asset)?.fields?.description || '/film')}
+                className="relative group col-span-2 overflow-hidden block"
+              >
+                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500 ease-in-out z-10" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-600 ease-in-out z-20">
+                  <h3 className="text-white text-4xl font-bold text-center px-8 font-[family-name:var(--font-kay-pho-du)]">
+                    {String((images?.image4 as Asset)?.fields?.title || '')}
+                  </h3>
+                </div>
+                <Image
+                  src={`https:${(images?.image4 as Asset)?.fields?.file?.url}`}
+                  alt="Homepage Image 4"
+                  width={1000}
+                  height={1000}
+                  className="w-full h-auto transition-transform duration-500 ease-in-out scale-[1.025] group-hover:scale-100"
+                />
+              </Link>
             </div>
             <div className="flex flex-col items-center justify-center gap-8">
               <span className="w-[32px] h-[100vh] bg-black"></span>
               <span className="w-[47px] h-[47px] rounded-full bg-black"></span>
             </div>
+          </div>
+
+          {/* Copyright */}
+          <div className="w-full text-end py-6 items-end justify-end">
+            <p className="text-3xl font-bold font-[family-name:var(--font-kay-pho-du)]">
+              Copyright © John Packer 2026
+            </p>
           </div>
         </div>
       </div>

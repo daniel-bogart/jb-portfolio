@@ -51,11 +51,11 @@ export default function FilmGallery({ images }: FilmGalleryProps) {
     <div ref={galleryRef} className="grid grid-cols-2 gap-6 mt-12">
       {images.map((image, index) => {
         const url = image.fields.file?.url as string;
-        const width = image.fields.file?.details.image?.width || 800;
-        const height = image.fields.file?.details.image?.height || 600;
+        const width = (image.fields.file?.details as any)?.image?.width || 800;
+        const height = (image.fields.file?.details as any)?.image?.height || 600;
 
         return (
-          <div key={index} className="gallery-item relative aspect-[4/3] bg-black">
+          <div key={index} className="gallery-item relative aspect-[675/357] bg-black">
             <Image
               src={`https:${url}`}
               alt={image.fields.description as string || `Gallery image ${index + 1}`}

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function HomepageNavBar() {
   return (
-    <nav className="absolute top-[-100px] left-0 right-0 z-50 bg-transparent flex justify-between items-center rotate-15">
+    <nav className="absolute top-[-100px] left-0 right-0 z-[100] bg-transparent flex justify-between items-center rotate-15">
       <div className="w-full px-6 py-6 flex flex-col items-center justify-between max-w-[60%]">
         {/* Logo/Name - using image */}
         <div className="w-full flex justify-between items-end">
@@ -56,7 +56,7 @@ export default function HomepageNavBar() {
 
           {/* Contact/Email Icon */}
           <Link
-            href="/contact"
+            href="mailto:jpacker3737@gmail.com"
             className="hover:opacity-70 transition-opacity"
             aria-label="Contact"
           >
