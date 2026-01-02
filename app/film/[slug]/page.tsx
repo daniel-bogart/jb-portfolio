@@ -32,7 +32,7 @@ export default async function FilmProjectPage({ params }: FilmProjectPageProps) 
   const { fields } = project;
 
   return (
-    <main className="min-h-screen pt-40">
+    <main className="min-h-screen pt-40 bg-[#E8E2D5]">
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Title Section */}
         <div className="mb-12">
