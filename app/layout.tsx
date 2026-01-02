@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Days_One, Kay_Pho_Du } from "next/font/google";
 import "./globals.css";
 import ConditionalNav from "@/components/ConditionalNav";
 
@@ -10,6 +10,18 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const daysOne = Days_One({
+  weight: "400",
+  variable: "--font-days-one",
+  subsets: ["latin"],
+});
+
+const kayPhoDu = Kay_Pho_Du({
+  weight: ["400", "700"],
+  variable: "--font-kay-pho-du",
   subsets: ["latin"],
 });
 
@@ -26,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${daysOne.variable} ${kayPhoDu.variable} antialiased`}
       >
         <ConditionalNav />
         {children}
