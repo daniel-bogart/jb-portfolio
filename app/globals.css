@@ -10,6 +10,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-days-one: var(--font-days-one);
+  --font-kay-pho-du: var(--font-kay-pho-du);
 }
 
 body {
