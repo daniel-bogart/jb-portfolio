@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Days_One, Kay_Pho_Du } from "next/font/google";
 import "./globals.css";
 import ConditionalNav from "@/components/ConditionalNav";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +41,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${daysOne.variable} ${kayPhoDu.variable} antialiased`}
       >
+        <SmoothScroll />
         {/* ConditionalNav handles showing Navigation on all pages except homepage */}
         <ConditionalNav />
         {children}
