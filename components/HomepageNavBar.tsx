@@ -36,8 +36,8 @@ export default function HomepageNavBar() {
         {/* Navigation Links */}
         <div className="flex items-center gap-8 w-full justify-between max-w-xl">
           <Link
-            href="/film"
-            className="text-3xl font-normal hover:opacity-70 transition-opacity"
+            href="/"
+            className="text-3xl font-normal hover:opacity-70 transition-opacity underline"
           >
             film
           </Link>

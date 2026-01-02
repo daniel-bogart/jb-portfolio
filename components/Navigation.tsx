@@ -8,7 +8,7 @@ export default function Navigation() {
   const pathname = usePathname();
 
   const links = [
-    { href: '/film', label: 'film' },
+    { href: '/', label: 'film' },
     { href: '/design', label: 'design' },
     { href: '/about', label: 'about' },
   ];
@@ -31,17 +31,24 @@ export default function Navigation() {
           />
         </Link>
 
-        {links.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={`text-sm lg:text-2xl font-normal hover:opacity-70 transition-opacity ${
-              pathname?.startsWith(link.href) ? "underline" : ""
-            }`}
-          >
-            {link.label}
-          </Link>
-        ))}
+        {links.map((link) => {
+          // Special handling for homepage/film link
+          const isActive = link.href === '/' 
+            ? pathname === '/' 
+            : pathname?.startsWith(link.href);
+            
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`text-sm lg:text-2xl font-normal hover:opacity-70 transition-opacity ${
+                isActive ? "underline" : ""
+              }`}
+            >
+              {link.label}
+            </Link>
+          );
+        })}
 
         {/* Contact/Email Icon - filled style */}
         <Link

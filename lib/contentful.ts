@@ -27,7 +27,6 @@ export async function getAllFilmProjects(): Promise<FilmProject[]> {
 export async function getFilmProjectBySlug(slug: string): Promise<FilmProject | null> {
   const response = await client.getEntries<FilmProjectSkeleton>({
     content_type: 'filmProject',
-    limit: 1,
   } as any);
   
   // Filter manually since TypeScript doesn't like the field query syntax
@@ -47,7 +46,6 @@ export async function getAllWebDesignProjects(): Promise<WebDesign[]> {
 export async function getWebDesignBySlug(slug: string): Promise<WebDesign | null> {
   const response = await client.getEntries<WebDesignSkeleton>({
     content_type: 'webDesign',
-    limit: 1,
   } as any);
   
   // Filter manually since TypeScript doesn't like the field query syntax
