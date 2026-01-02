@@ -11,27 +11,14 @@ interface FilmProjectPageProps {
 }
 
 export async function generateStaticParams() {
-  const projects = await getAllFilmProjects();
-  
-  return projects.map((project) => ({
-    slug: project.fields.slug,
-  }));
-}
-
-export async function generateMetadata({ params }: FilmProjectPageProps) {
-  const { slug } = await params;
-  const project = await getFilmProjectBySlug(slug);
-  
-  if (!project) {
-    return {
-      title: 'Project Not Found',
-    };
+  try {
+    const projects = await getAllFilmProjects();
+    return projects.map((project) => ({
+      slug: project.fields.slug,
+    }));
+  } catch (error) {
+    return [];
   }
-
-  return {
-    title: `${project.fields.title} - John 'JB' Packer`,
-    description: project.fields.metaDescription || project.fields.synopsis || `${project.fields.title} production design`,
-  };
 }
 
 export default async function FilmProjectPage({ params }: FilmProjectPageProps) {

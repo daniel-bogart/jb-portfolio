@@ -1,11 +1,7 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import { notFound } from 'next/navigation';
-import { getWebDesignBySlug } from '@/lib/contentful';
+import { getWebDesignBySlug, getAllWebDesignProjects } from '@/lib/contentful';
 import Image from 'next/image';
 import { Asset } from 'contentful';
-import { WebDesign } from '@/types/contentful';
 
 interface WebDesignProjectPageProps {
   params: Promise<{
@@ -13,35 +9,25 @@ interface WebDesignProjectPageProps {
   }>;
 }
 
-export default function WebDesignProjectPage({ params }: WebDesignProjectPageProps) {
-  const [project, setProject] = useState<WebDesign | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [slug, setSlug] = useState<string>('');
-  
-  useEffect(() => {
-    params.then(({ slug: resolvedSlug }) => {
-      setSlug(resolvedSlug);
-      getWebDesignBySlug(resolvedSlug).then((data) => {
-        setProject(data);
-        setLoading(false);
-      });
-    });
-  }, [params]);
-  
-  if (loading) {
-    return (
-      <main className="min-h-screen pt-32 px-6 bg-[#E8E2D5]">
-        <div className="max-w-7xl mx-auto">
-          <p>Loading...</p>
-        </div>
-      </main>
-    );
+export async function generateStaticParams() {
+  try {
+    const projects = await getAllWebDesignProjects();
+    return projects.map((project) => ({
+      slug: project.fields.slug,
+    }));
+  } catch (error) {
+    return [];
   }
-  
+}
+
+export default async function WebDesignProjectPage({ params }: WebDesignProjectPageProps) {
+  const { slug } = await params;
+  const project = await getWebDesignBySlug(slug);
+
   if (!project) {
     notFound();
   }
-  
+
   const { fields } = project;
 
   return (
@@ -68,8 +54,8 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6 mb-12">
             {fields.gallery.map((image, index) => {
               const asset = image as Asset;
-              const width = asset.fields.file?.details.image?.width || 800;
-              const height = asset.fields.file?.details.image?.height || 600;
+              const width = (asset.fields.file?.details as any)?.image?.width || 800;
+              const height = (asset.fields.file?.details as any)?.image?.height || 600;
               
               return (
                 <div key={index} className="mb-6 break-inside-avoid">
@@ -108,4 +94,3 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
     </main>
   );
 }
-
