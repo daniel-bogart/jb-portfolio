@@ -55,7 +55,7 @@ export default function FilmGallery({ images }: FilmGalleryProps) {
         const height = (image.fields.file?.details as any)?.image?.height || 600;
 
         return (
-          <div key={index} className="gallery-item relative aspect-[4/3] bg-black">
+          <div key={index} className="gallery-item relative aspect-[675/357] bg-black">
             <Image
               src={`https:${url}`}
               alt={image.fields.description as string || `Gallery image ${index + 1}`}

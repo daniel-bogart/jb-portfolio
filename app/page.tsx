@@ -84,7 +84,7 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500 ease-in-out z-10" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-600 ease-in-out z-20">
-                  <h3 className="text-white text-4xl font-bold text-center px-8">
+                  <h3 className="text-white text-4xl font-bold text-center px-8 font-[family-name:var(--font-kay-pho-du)]">
                     {String((images?.image1 as Asset)?.fields?.title || '')}
                   </h3>
                 </div>
@@ -102,7 +102,7 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500 ease-in-out z-10" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-600 ease-in-out z-20">
-                  <h3 className="text-white text-4xl font-bold text-center px-8">
+                  <h3 className="text-white text-4xl font-bold text-center px-8 font-[family-name:var(--font-kay-pho-du)]">
                     {String((images?.image2 as Asset)?.fields?.title || '')}
                   </h3>
                 </div>
@@ -133,7 +133,7 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500 ease-in-out z-10" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-600 ease-in-out z-20">
-                  <h3 className="text-white text-4xl font-bold text-center px-8">
+                  <h3 className="text-white text-4xl font-bold text-center px-8 font-[family-name:var(--font-kay-pho-du)]">
                     {String((images?.image3 as Asset)?.fields?.title || '')}
                   </h3>
                 </div>
@@ -166,7 +166,7 @@ export default function Home() {
               >
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500 ease-in-out z-10" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-600 ease-in-out z-20">
-                  <h3 className="text-white text-4xl font-bold text-center px-8">
+                  <h3 className="text-white text-4xl font-bold text-center px-8 font-[family-name:var(--font-kay-pho-du)]">
                     {String((images?.image4 as Asset)?.fields?.title || '')}
                   </h3>
                 </div>
