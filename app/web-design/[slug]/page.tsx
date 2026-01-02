@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import { getWebDesignBySlug } from '@/lib/contentful';
 import Image from 'next/image';
 import { Asset } from 'contentful';
-import { WebDesign } from '@/types/contentful';
+import { WebDesign, WebDesignFields } from '@/types/contentful';
 
 interface WebDesignProjectPageProps {
   params: Promise<{
@@ -42,7 +42,7 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
     notFound();
   }
   
-  const { fields } = project;
+  const fields = project.fields as WebDesignFields;
 
   return (
     <main className="min-h-screen pt-32 px-6 bg-[#E8E2D5]">

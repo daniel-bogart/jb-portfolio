@@ -1,4 +1,4 @@
-import { Entry, Asset } from 'contentful';
+import { Entry, Asset, EntrySkeletonType } from 'contentful';
 
 export interface HomepageImagesFields {
   image1: Asset;
@@ -7,7 +7,12 @@ export interface HomepageImagesFields {
   image4: Asset;
 }
 
-export type HomepageImages = Entry<HomepageImagesFields>;
+export interface HomepageImagesSkeleton extends EntrySkeletonType {
+  contentTypeId: 'homepageImages';
+  fields: HomepageImagesFields;
+}
+
+export type HomepageImages = Entry<HomepageImagesSkeleton>;
 
 export interface FilmProjectFields {
   title: string;
@@ -22,7 +27,12 @@ export interface FilmProjectFields {
   setDresser?: string;
 }
 
-export type FilmProject = Entry<FilmProjectFields>;
+export interface FilmProjectSkeleton extends EntrySkeletonType {
+  contentTypeId: 'filmProject';
+  fields: FilmProjectFields;
+}
+
+export type FilmProject = Entry<FilmProjectSkeleton>;
 
 export interface WebDesignFields {
   title: string;
@@ -32,5 +42,10 @@ export interface WebDesignFields {
   article?: string;
 }
 
-export type WebDesign = Entry<WebDesignFields>;
+export interface WebDesignSkeleton extends EntrySkeletonType {
+  contentTypeId: 'webDesign';
+  fields: WebDesignFields;
+}
+
+export type WebDesign = Entry<WebDesignSkeleton>;
 

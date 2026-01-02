@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getAllWebDesignProjects } from '@/lib/contentful';
-import { WebDesign } from '@/types/contentful';
+import { WebDesign, WebDesignFields } from '@/types/contentful';
 import { Asset } from 'contentful';
 
 export default function WebDesignPage() {
@@ -46,12 +46,13 @@ export default function WebDesignPage() {
         {projects.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project) => {
-              const thumbnail = project.fields.gallery?.[0] as Asset;
+              const fields = project.fields as WebDesignFields;
+              const thumbnail = fields.gallery?.[0] as Asset;
               
               return (
                 <Link
                   key={project.sys.id}
-                  href={`/design/${project.fields.slug}`}
+                  href={`/design/${fields.slug}`}
                   className="group"
                 >
                   {/* Thumbnail */}
@@ -59,7 +60,7 @@ export default function WebDesignPage() {
                     <div className="relative aspect-[3/4] bg-black mb-4 overflow-hidden">
                       <Image
                         src={`https:${thumbnail.fields.file?.url}`}
-                        alt={project.fields.title}
+                        alt={fields.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -69,13 +70,13 @@ export default function WebDesignPage() {
                   
                   {/* Title */}
                   <h2 className="text-xl font-normal group-hover:underline">
-                    {project.fields.title}
+                    {fields.title}
                   </h2>
                   
                   {/* Description preview */}
-                  {project.fields.description && (
+                  {fields.description && (
                     <p className="text-sm text-gray-700 mt-2 line-clamp-2">
-                      {project.fields.description}
+                      {fields.description}
                     </p>
                   )}
                 </Link>
