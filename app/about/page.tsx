@@ -3,24 +3,28 @@ import Link from "next/link";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen pt-32 px-6">
+    <main className="min-h-screen pt-20 lg:pt-32 px-3 lg:px-6 bg-[#E8E2D5]">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-start justify-start w-full relative">
-          <div className="flex flex-col items-center justify-start gap-4 absolute left-0 top-0">
+        {/* Title Section */}
+        <div className="flex flex-start justify-start w-full relative mb-8 lg:mb-12">
+          {/* Decorative elements - hidden on mobile */}
+          <div className="hidden lg:flex flex-col items-center justify-start gap-4 absolute left-0 top-0">
             <span className="w-[32px] h-[80px] bg-black"></span>
             <span className="h-[47px] w-[47px] bg-black rounded-full"></span>
           </div>
-          <div className="flex flex-col items-start justify-start pl-16">
-            <span className="h-[33px] w-[50%] bg-black ml-[-30px]"></span>
-            <h1 className="pl-4 pt-4 text-6xl max-w-6xl font-semibold mb-12 font-[family-name:var(--font-kay-pho-du)]">
+          <div className="flex flex-col items-start justify-start lg:pl-16 w-full">
+            <span className="hidden lg:block h-[33px] w-[50%] bg-black ml-[-30px]"></span>
+            <h1 className="lg:pl-4 lg:pt-4 text-3xl lg:text-6xl max-w-6xl font-semibold font-[family-name:var(--font-kay-pho-du)]">
               JB Packer is a production designer & director based in Los
               Angeles, CA.{" "}
             </h1>
           </div>
         </div>
-        <div className="space-y-6 font-[family-name:var(--font-kay-pho-du)] w-full flex items-center justify-center">
-          <div className="flex flex-col font-semibold gap-6 max-w-5xl">
-            <p className="text-2xl leading-relaxed">
+
+        {/* Bio Section */}
+        <div className="space-y-6 font-[family-name:var(--font-kay-pho-du)] w-full flex items-center justify-center mb-8 lg:mb-12">
+          <div className="flex flex-col font-semibold gap-4 lg:gap-6 max-w-5xl">
+            <p className="text-base lg:text-2xl leading-relaxed">
               John &quot;JB&quot; Packer is a production designer and director
               from Humboldt County, California. He graduated California State
               University Los Angeles in 2023 with a Bachelor&apos;s Degree in
@@ -28,7 +32,7 @@ export default function AboutPage() {
               Raw Color Studios, he continues to work with the group frequently.
               Shooting films and hosting live events since their founding.
             </p>
-            <p className="text-2xl leading-relaxed">
+            <p className="text-base lg:text-2xl leading-relaxed">
               He is known for leaning into highly stylized and aesthetic based
               film work. Obsessing over the idea of cohesiveness between each
               piece of production. From both shot to shot and department to
@@ -38,20 +42,25 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
-        <div className="flex items-start justify-start p-4">
-          <div className="flex flex-col items-start justify-start w-[388px] min-w-[388px]">
+
+        {/* Image and Social Links Section */}
+        <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-start p-0 lg:p-4 gap-6 lg:gap-0">
+          {/* Image */}
+          <div className="flex flex-col items-center lg:items-start justify-start w-full max-w-[300px] lg:max-w-none lg:w-[388px] lg:min-w-[388px]">
             <Image
               src="/jb-writing.png"
               alt="JB Packer"
               width={388}
               height={388}
-              className="w-[388px] h-auto"
+              className="w-full lg:w-[388px] h-auto"
             />
-            <p className="text-sm font-[family-name:var(--font-kay-pho-du)] text-end max-w-[295px] flex self-end">
+            <p className="text-xs lg:text-sm font-[family-name:var(--font-kay-pho-du)] text-center lg:text-end w-full lg:max-w-[295px] lg:flex lg:self-end mt-2">
               (Early 2025, editing The Space Between Two Worlds)
             </p>
           </div>
-          <div className="flex flex-row gap-4 justify-end items-end self-end w-full">
+
+          {/* Social Links */}
+          <div className="flex flex-row gap-6 lg:gap-4 justify-center lg:justify-end items-center lg:items-end lg:self-end w-full">
             <Link
               href="https://www.instagram.com/jbsaysrelax?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
               target="_blank"
@@ -60,8 +69,7 @@ export default function AboutPage() {
               aria-label="Instagram"
             >
               <svg
-                width="48"
-                height="48"
+                className="w-10 h-10 lg:w-12 lg:h-12"
                 viewBox="0 0 48 48"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -83,8 +91,7 @@ export default function AboutPage() {
               aria-label="Raw Color Studios"
             >
               <svg
-                width="48"
-                height="48"
+                className="w-10 h-10 lg:w-12 lg:h-12"
                 viewBox="0 0 48 48"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -102,8 +109,8 @@ export default function AboutPage() {
         </div>
 
         {/* Copyright */}
-        <div className="w-full text-center py-12 mt-12">
-          <p className="text-2xl font-bold font-[family-name:var(--font-kay-pho-du)]">
+        <div className="w-full text-center py-8 lg:py-12 mt-8 lg:mt-12">
+          <p className="text-sm lg:text-2xl font-bold font-[family-name:var(--font-kay-pho-du)]">
             Copyright © John Packer 2026
           </p>
         </div>

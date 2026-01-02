@@ -1,15 +1,24 @@
 import { createClient } from 'contentful';
-import { FilmProject, FilmProjectSkeleton, HomepageImages, HomepageImagesSkeleton, WebDesign, WebDesignSkeleton } from '@/types/contentful';
+import { HomepageImages, FilmProject, WebDesign, HomepageImagesSkeleton, FilmProjectSkeleton, WebDesignSkeleton } from '@/types/contentful';
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || '',
   accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN || '',
 });
 
+export async function getHomepageImages(): Promise<HomepageImages> {
+  const response = await client.getEntries<HomepageImagesSkeleton>({
+    content_type: 'homepageImages',
+    limit: 1,
+  });
+
+  return response.items[0];
+}
+
 export async function getAllFilmProjects(): Promise<FilmProject[]> {
   const response = await client.getEntries<FilmProjectSkeleton>({
     content_type: 'filmProject',
-    order: ['-fields.featuredOrder', '-fields.year'],
+    order: ['-sys.createdAt'],
   });
 
   return response.items;
@@ -18,44 +27,18 @@ export async function getAllFilmProjects(): Promise<FilmProject[]> {
 export async function getFilmProjectBySlug(slug: string): Promise<FilmProject | null> {
   const response = await client.getEntries<FilmProjectSkeleton>({
     content_type: 'filmProject',
-    'fields.slug': slug,
     limit: 1,
-  });
-
-  if (response.items.length === 0) {
-    return null;
-  }
-
-  return response.items[0];
-}
-
-export async function getFeaturedFilmProjects(limit: number = 6): Promise<FilmProject[]> {
-  const response = await client.getEntries<FilmProjectSkeleton>({
-    content_type: 'filmProject',
-    order: ['-fields.featuredOrder'],
-    limit,
-  });
-
-  return response.items;
-}
-
-export async function getHomepageImages(): Promise<HomepageImages | null> {
-  const response = await client.getEntries<HomepageImagesSkeleton>({
-    content_type: 'homepageImages',
-    limit: 1,
-  });
-
-  if (response.items.length === 0) {
-    return null;
-  }
-
-  return response.items[0];
+  } as any);
+  
+  // Filter manually since TypeScript doesn't like the field query syntax
+  const filtered = response.items.filter((item) => item.fields.slug === slug);
+  return filtered[0] || null;
 }
 
 export async function getAllWebDesignProjects(): Promise<WebDesign[]> {
   const response = await client.getEntries<WebDesignSkeleton>({
     content_type: 'webDesign',
-    order: ['-fields.title'],
+    order: ['-sys.createdAt'],
   });
 
   return response.items;
@@ -64,14 +47,13 @@ export async function getAllWebDesignProjects(): Promise<WebDesign[]> {
 export async function getWebDesignBySlug(slug: string): Promise<WebDesign | null> {
   const response = await client.getEntries<WebDesignSkeleton>({
     content_type: 'webDesign',
-    'fields.slug': slug,
     limit: 1,
-  });
-
-  if (response.items.length === 0) {
-    return null;
-  }
-
-  return response.items[0];
+  } as any);
+  
+  // Filter manually since TypeScript doesn't like the field query syntax
+  const filtered = response.items.filter((item) => item.fields.slug === slug);
+  return filtered[0] || null;
 }
+
+export default client;
 

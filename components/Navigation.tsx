@@ -14,19 +14,19 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 justify-center items-center flex bg-transparent w-full z-[100]">
-      <div className="max-w-7xl w-full px-6 py-6 flex items-center justify-between">
+    <nav className="fixed top-0 left-0 justify-center items-center flex bg-[#E8E2D5] w-full z-[100]">
+      <div className="w-full px-3 py-4 lg:px-6 lg:py-6 flex items-center justify-between gap-2 lg:gap-4 lg:max-w-7xl">
         {/* Logo/Name - using image */}
         <Link
           href="/"
-          className="flex items-center hover:opacity-70 transition-opacity"
+          className="flex items-center hover:opacity-70 transition-opacity shrink-0"
         >
           <Image
             src="/Home Button.png"
             alt="john 'JB' packer"
             width={354}
             height={55}
-            className="h-auto"
+            className="h-auto w-auto max-w-[120px] lg:max-w-none"
             priority
           />
         </Link>
@@ -35,7 +35,7 @@ export default function Navigation() {
           <Link
             key={link.href}
             href={link.href}
-            className={`text-2xl font-normal hover:opacity-70 transition-opacity ${
+            className={`text-sm lg:text-2xl font-normal hover:opacity-70 transition-opacity ${
               pathname?.startsWith(link.href) ? "underline" : ""
             }`}
           >
@@ -46,7 +46,7 @@ export default function Navigation() {
         {/* Contact/Email Icon - filled style */}
         <Link
           href="mailto:jpacker3737@gmail.com"
-          className="hover:opacity-70 transition-opacity"
+          className="hover:opacity-70 transition-opacity shrink-0"
           aria-label="Contact"
         >
           <svg
@@ -54,7 +54,7 @@ export default function Navigation() {
             height="32"
             viewBox="0 0 24 24"
             fill="currentColor"
-            className="w-8 h-8"
+            className="w-6 h-6 lg:w-8 lg:h-8"
           >
             <rect
               x="2"

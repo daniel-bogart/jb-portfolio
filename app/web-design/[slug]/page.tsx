@@ -63,25 +63,20 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
           <p className="text-2xl mb-8 max-w-4xl">{fields.description}</p>
         )}
 
-        {/* Gallery - Masonry/Tetris style with original aspect ratios */}
+        {/* Gallery */}
         {fields.gallery && fields.gallery.length > 0 && (
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {fields.gallery.map((image, index) => {
               const asset = image as Asset;
-              const details = asset.fields.file?.details as { image?: { width?: number; height?: number } } | undefined;
-              const width = details?.image?.width || 800;
-              const height = details?.image?.height || 600;
-              
               return (
-                <div key={index} className="mb-6 break-inside-avoid">
+                <div key={index} className="relative aspect-[3/4] bg-black">
                   <Image
                     src={`https:${asset.fields.file?.url}`}
                     alt={String(
                       asset.fields.title || `Gallery image ${index + 1}`
                     )}
-                    width={width}
-                    height={height}
-                    className="w-full h-auto"
+                    fill
+                    className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>

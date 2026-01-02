@@ -3,6 +3,7 @@ import { getFilmProjectBySlug, getAllFilmProjects } from '@/lib/contentful';
 import FilmHero from '@/components/FilmHero';
 import FilmGallery from '@/components/FilmGallery';
 import { Asset } from 'contentful';
+import { FilmProjectFields } from '@/types/contentful';
 
 interface FilmProjectPageProps {
   params: Promise<{
@@ -13,9 +14,12 @@ interface FilmProjectPageProps {
 export async function generateStaticParams() {
   try {
     const projects = await getAllFilmProjects();
-    return projects.map((project) => ({
-      slug: project.fields.slug,
-    }));
+    return projects.map((project) => {
+      const fields = project.fields as FilmProjectFields;
+      return {
+        slug: fields.slug,
+      };
+    });
   } catch (error) {
     return [];
   }
@@ -29,10 +33,10 @@ export default async function FilmProjectPage({ params }: FilmProjectPageProps) 
     notFound();
   }
 
-  const { fields } = project;
+  const fields = project.fields as FilmProjectFields;
 
   return (
-    <main className="min-h-screen pt-40">
+    <main className="min-h-screen pt-40 bg-[#E8E2D5]">
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Title Section */}
         <div className="mb-12">

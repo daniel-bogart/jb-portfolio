@@ -4,8 +4,9 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import HomepageNavBar from "@/components/HomepageNavBar";
+import Navigation from "@/components/Navigation";
 import { getHomepageImages } from "@/lib/contentful";
-import { HomepageImages } from "@/types/contentful";
+import { HomepageImages, HomepageImagesFields } from "@/types/contentful";
 import { Asset } from "contentful";
 import { gsap } from "gsap";
 
@@ -64,13 +65,87 @@ export default function Home() {
     );
   }
 
-  const images = homepageImages?.fields;
+  const images = homepageImages?.fields as HomepageImagesFields | undefined;
+
+  // Reusable image link component for cleaner code
+  const ImageLink = ({ image, alt, className = "" }: { image: Asset; alt: string; className?: string }) => (
+    <Link 
+      href={String(image?.fields?.description || '/film')}
+      className={`relative group overflow-hidden block w-full max-w-full ${className}`}
+    >
+      <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500 ease-in-out z-10" />
+      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-600 ease-in-out z-20">
+        <h3 className="text-white text-sm lg:text-4xl font-bold text-center px-3 lg:px-8 font-[family-name:var(--font-kay-pho-du)]">
+          {String(image?.fields?.title || '')}
+        </h3>
+      </div>
+      <Image
+        src={`https:${image?.fields?.file?.url}`}
+        alt={alt}
+        width={1000}
+        height={1000}
+        className="w-full h-auto max-w-full transition-transform duration-500 ease-in-out scale-[1.025] group-hover:scale-100"
+        sizes="100vw"
+        style={{ maxWidth: '100%', height: 'auto' }}
+      />
+    </Link>
+  );
 
   return (
-    <>
-      <HomepageNavBar />
+    <div className="overflow-x-clip max-w-[100vw]">
+      {/* Mobile Navigation */}
+      <div className="lg:hidden">
+        <Navigation />
+      </div>
+      
+      {/* Desktop Navigation */}
+      <div className="hidden lg:block">
+        <HomepageNavBar />
+      </div>
 
-      <div className="flex items-center justify-center bg-[#E8E2D5] w-full">
+      {/* Mobile Layout - Simple stacked images */}
+      <div className="lg:hidden flex flex-col bg-[#E8E2D5] w-full min-h-screen pt-16 px-3 max-w-[100vw] overflow-x-clip">
+        {/* Mobile intro text */}
+        <div className="bg-black text-white p-3 mb-3 w-full max-w-full">
+          <p className="text-[10px] leading-tight font-semibold font-[family-name:var(--font-days-one)] mb-2">
+            [01] Production Designer & Director. Founding member of Raw Color Studios.
+          </p>
+          <p className="text-[10px] leading-tight font-semibold font-[family-name:var(--font-days-one)]">
+            [02] Born in HUMBOLDT COUNTY. Based in Los Angeles CA.
+          </p>
+        </div>
+
+        {/* Mobile images - SINGLE COLUMN, constrained width */}
+        <div className="flex flex-col gap-3 mb-3 w-full">
+          {images?.image1 && <ImageLink image={images.image1 as Asset} alt="Homepage Image 1" />}
+          {images?.image2 && <ImageLink image={images.image2 as Asset} alt="Homepage Image 2" />}
+          {images?.image3 && <ImageLink image={images.image3 as Asset} alt="Homepage Image 3" />}
+          {images?.image4 && <ImageLink image={images.image4 as Asset} alt="Homepage Image 4" />}
+        </div>
+
+        {/* Mobile statement */}
+        <div className="bg-black text-white p-3 mb-3 w-full max-w-full">
+          <p className="text-[10px] leading-tight font-normal font-[family-name:var(--font-days-one)] mb-2">
+            [03] With work that emphasizes leaning into highly stylized
+            and aesthetic based film. As well as obsessing over the idea
+            of cohesiveness between each and every aspect of production.
+          </p>
+          <p className="text-[10px] leading-tight font-normal font-[family-name:var(--font-days-one)]">
+            Creating a living, breathing, and tangible world that can
+            further accentuate the emotions of our own is always the end goal.
+          </p>
+        </div>
+
+        {/* Mobile Copyright */}
+        <div className="w-full text-center py-3 pb-6 max-w-full">
+          <p className="text-[10px] font-bold font-[family-name:var(--font-kay-pho-du)]">
+            Copyright © John Packer 2026
+          </p>
+        </div>
+      </div>
+
+      {/* Desktop Layout - Original tilted design */}
+      <div className="hidden lg:flex items-center justify-center bg-[#E8E2D5] w-full overflow-x-clip">
         <div className="w-full flex flex-col max-w-8xl px-6 py-6 pt-[440px] rotate-15 ml-[-30%] gap-8">
           <div className="w-full flex flex-row justify-between items-start overflow-visible relative">
             <div className="flex flex-col items-center justify-center gap-8">
@@ -193,6 +268,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
