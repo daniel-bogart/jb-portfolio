@@ -56,7 +56,7 @@ export default function HomepageNavBar() {
 
           {/* Contact/Email Icon */}
           <Link
-            href="/contact"
+            href="mailto:jpacker3737@gmail.com"
             className="hover:opacity-70 transition-opacity"
             aria-label="Contact"
           >

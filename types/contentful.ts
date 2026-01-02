@@ -35,8 +35,21 @@ export interface HomepageImagesSkeleton {
   };
 }
 
+export interface WebDesignSkeleton {
+  contentTypeId: 'webDesign';
+  fields: {
+    title: EntryFieldTypes.Symbol;
+    slug: EntryFieldTypes.Symbol;
+    gallery?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+    description?: EntryFieldTypes.Text;
+    article?: EntryFieldTypes.Text;
+    metaData?: EntryFieldTypes.Symbol;
+  };
+}
+
 export type FilmProject = Entry<FilmProjectSkeleton, undefined, string>;
 export type HomepageImages = Entry<HomepageImagesSkeleton, undefined, string>;
+export type WebDesign = Entry<WebDesignSkeleton, undefined, string>;
 
 export interface FilmProjectFields {
   title: string;
@@ -65,5 +78,14 @@ export interface HomepageImagesFields {
   image2: Asset;
   image3: Asset;
   image4: Asset;
+}
+
+export interface WebDesignFields {
+  title: string;
+  slug: string;
+  gallery?: Asset[];
+  description?: string;
+  article?: string;
+  metaData?: string;
 }
 

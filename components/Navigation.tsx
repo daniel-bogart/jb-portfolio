@@ -9,7 +9,7 @@ export default function Navigation() {
 
   const links = [
     { href: '/film', label: 'film' },
-    { href: '/web-design', label: 'web design' },
+    { href: '/design', label: 'design' },
     { href: '/about', label: 'about' },
   ];
 
@@ -24,8 +24,8 @@ export default function Navigation() {
           <Image
             src="/Home Button.png"
             alt="john 'JB' packer"
-            width={506}
-            height={79}
+            width={354}
+            height={55}
             className="h-auto"
             priority
           />
@@ -45,7 +45,7 @@ export default function Navigation() {
 
         {/* Contact/Email Icon - filled style */}
         <Link
-          href="/contact"
+          href="mailto:jpacker3737@gmail.com"
           className="hover:opacity-70 transition-opacity"
           aria-label="Contact"
         >
