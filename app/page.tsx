@@ -72,7 +72,7 @@ export default function Home() {
 
       <div className="flex items-center justify-center bg-[#E8E2D5] w-full">
         <div className="w-full flex flex-col max-w-8xl px-6 py-6 pt-[440px] rotate-15 ml-[-30%] gap-8">
-           <div className="w-full flex flex-row justify-between items-start overflow-visible relative">
+          <div className="w-full flex flex-row justify-between items-start overflow-visible relative">
             <div className="flex flex-col items-center justify-center gap-8">
               <span className="w-[32px] h-[100vh] bg-black"></span>
               <span className="w-[47px] h-[47px] rounded-full bg-black"></span>
@@ -102,22 +102,37 @@ export default function Home() {
               <span className="w-[50vw] h-[32px] bg-black"></span>
             </div>
           </div>
-          <div className="w-full flex flex-row justify-between items-start ml-[30%]">
+          <div className="w-[130vw] flex flex-row justify-between items-start ml-[30%]">
             <span className="w-[32px] h-[150vh] bg-black"></span>
-            <div className="w-full h-full flex flex-col items-center justify-center gap-8  px-10">
+            <div className="w-full h-full grid grid-cols-3 gap-8 px-10">
               <Image
                 src={`https:${images?.image3?.fields?.file?.url}`}
                 alt="Homepage Image 3"
                 width={1000}
                 height={1000}
-                className="w-full h-auto"
+                className="w-full h-auto col-span-2"
               />
+              <div className="flex items-center justify-center bg-black row-span-2 p-6">
+                <div className="-rotate-90 w-[calc(100vh*1.2)] text-center flex flex-col items-center justify-center ml-[-50%] gap-8">
+                  <p className="text-white mb-4 w-[calc(100vh*1.2)] text-center text-xl font-normal font-[family-name:var(--font-days-one)]">
+                    [03] With work that emphasizes leaning into highly stylized
+                    and aesthetic based film. As well as obsessing over the idea
+                    of cohesiveness between each and every aspect of production.
+                    From both shot to shot and department to department.
+                  </p>
+                  <p className="text-white w-[calc(100vh*1.2)] text-center text-xl font-normal font-[family-name:var(--font-days-one)]">
+                    Creating a living, breathing, and tangible world that can
+                    further accentuate the emotions of our own is always the end
+                    goal.
+                  </p>
+                </div>
+              </div>
               <Image
                 src={`https:${images?.image4?.fields?.file?.url}`}
                 alt="Homepage Image 4"
                 width={1000}
                 height={1000}
-                className="w-full h-auto"
+                className="w-full h-auto col-span-2"
               />
             </div>
             <div className="flex flex-col items-center justify-center gap-8">
@@ -125,10 +140,12 @@ export default function Home() {
               <span className="w-[47px] h-[47px] rounded-full bg-black"></span>
             </div>
           </div>
-          
+
           {/* Copyright */}
-          <div className="w-full text-end py-12 items-end justify-end">
-            <p className="text-3xl font-bold font-[family-name:var(--font-kay-pho-du)]">Copyright © John Packer 2026</p>
+          <div className="w-full text-end py-6 items-end justify-end">
+            <p className="text-3xl font-bold font-[family-name:var(--font-kay-pho-du)]">
+              Copyright © John Packer 2026
+            </p>
           </div>
         </div>
       </div>
