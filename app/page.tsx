@@ -93,74 +93,28 @@ export default function Home() {
 
   return (
     <div className="overflow-x-clip max-w-[100vw]">
-      {/* Mobile Navigation */}
-      <div className="lg:hidden">
-        <Navigation />
-      </div>
-      
-      {/* Desktop Navigation */}
-      <div className="hidden lg:block">
-        <HomepageNavBar />
-      </div>
+      {/* Homepage Navigation - used on both mobile and desktop */}
+      <HomepageNavBar />
 
-      {/* Mobile Layout - Simple stacked images */}
-      <div className="lg:hidden flex flex-col bg-[#E8E2D5] w-full min-h-screen pt-16 px-3 max-w-[100vw] overflow-x-clip">
-        {/* Mobile intro text */}
-        <div className="bg-black text-white p-3 mb-3 w-full max-w-full">
-          <p className="text-[10px] leading-tight font-semibold font-[family-name:var(--font-days-one)] mb-2">
-            [01] Production Designer & Director. Founding member of Raw Color Studios.
-          </p>
-          <p className="text-[10px] leading-tight font-semibold font-[family-name:var(--font-days-one)]">
-            [02] Born in HUMBOLDT COUNTY. Based in Los Angeles CA.
-          </p>
-        </div>
-
-        {/* Mobile images - SINGLE COLUMN, constrained width */}
-        <div className="flex flex-col gap-3 mb-3 w-full">
-          {images?.image1 && <ImageLink image={images.image1 as Asset} alt="Homepage Image 1" />}
-          {images?.image2 && <ImageLink image={images.image2 as Asset} alt="Homepage Image 2" />}
-          {images?.image3 && <ImageLink image={images.image3 as Asset} alt="Homepage Image 3" />}
-          {images?.image4 && <ImageLink image={images.image4 as Asset} alt="Homepage Image 4" />}
-        </div>
-
-        {/* Mobile statement */}
-        <div className="bg-black text-white p-3 mb-3 w-full max-w-full">
-          <p className="text-[10px] leading-tight font-normal font-[family-name:var(--font-days-one)] mb-2">
-            [03] With work that emphasizes leaning into highly stylized
-            and aesthetic based film. As well as obsessing over the idea
-            of cohesiveness between each and every aspect of production.
-          </p>
-          <p className="text-[10px] leading-tight font-normal font-[family-name:var(--font-days-one)]">
-            Creating a living, breathing, and tangible world that can
-            further accentuate the emotions of our own is always the end goal.
-          </p>
-        </div>
-
-        {/* Mobile Copyright */}
-        <div className="w-full text-center py-3 pb-6 max-w-full">
-          <p className="text-[10px] font-bold font-[family-name:var(--font-kay-pho-du)]">
-            Copyright © John Packer 2026
-          </p>
-        </div>
-      </div>
-
-      {/* Desktop Layout - Original tilted design */}
-      <div className="hidden lg:flex items-center justify-center bg-[#E8E2D5] w-full overflow-x-clip">
-        <div className="w-full flex flex-col max-w-8xl px-6 py-6 pt-[440px] rotate-15 ml-[-30%] gap-8">
+      {/* Tilted Layout - Scaled for mobile and desktop */}
+      <div className="flex items-center justify-center bg-[#E8E2D5] w-full overflow-x-clip">
+        <div className="w-[140vw] lg:w-full flex flex-col max-w-8xl px-3 py-3 pt-[240px] lg:px-6 lg:py-6 lg:pt-[440px] rotate-15 ml-[-20%] lg:ml-[-30%] gap-4 lg:gap-8">
           <div className="w-full flex flex-row justify-between items-start overflow-visible relative">
-            <div className="flex flex-col items-center justify-center gap-8">
-              <span className="w-[32px] h-[100vh] bg-black"></span>
-              <span className="w-[47px] h-[47px] rounded-full bg-black"></span>
+            <div className="flex flex-col items-center justify-center gap-4 lg:gap-8">
+              <span className="w-[8px] lg:w-[32px] h-[50vh] lg:h-[100vh] bg-black"></span>
+              <span className="w-[20px] lg:w-[47px] h-[20px] lg:h-[47px] rounded-full bg-black"></span>
             </div>
-            <div className="w-full h-full flex flex-col items-center justify-center gap-8  px-10">
-              <Link 
-                href={String((images?.image1 as Asset)?.fields?.description || '/film')}
+            <div className="w-full h-full flex flex-col items-center justify-center gap-4 lg:gap-8 px-4 lg:px-10">
+              <Link
+                href={String(
+                  (images?.image1 as Asset)?.fields?.description || "/film"
+                )}
                 className="relative group w-full overflow-hidden block"
               >
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500 ease-in-out z-10" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-600 ease-in-out z-20">
-                  <h3 className="text-white text-4xl font-bold text-center px-8 font-[family-name:var(--font-kay-pho-du)]">
-                    {String((images?.image1 as Asset)?.fields?.title || '')}
+                  <h3 className="text-white text-sm lg:text-4xl font-bold text-center px-3 lg:px-8 font-[family-name:var(--font-kay-pho-du)]">
+                    {String((images?.image1 as Asset)?.fields?.title || "")}
                   </h3>
                 </div>
                 <Image
@@ -171,14 +125,16 @@ export default function Home() {
                   className="w-full h-auto transition-transform duration-500 ease-in-out scale-[1.025] group-hover:scale-100"
                 />
               </Link>
-              <Link 
-                href={String((images?.image2 as Asset)?.fields?.description || '/film')}
+              <Link
+                href={String(
+                  (images?.image2 as Asset)?.fields?.description || "/film"
+                )}
                 className="relative group w-full overflow-hidden block"
               >
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500 ease-in-out z-10" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-600 ease-in-out z-20">
-                  <h3 className="text-white text-4xl font-bold text-center px-8 font-[family-name:var(--font-kay-pho-du)]">
-                    {String((images?.image2 as Asset)?.fields?.title || '')}
+                  <h3 className="text-white text-sm lg:text-4xl font-bold text-center px-3 lg:px-8 font-[family-name:var(--font-kay-pho-du)]">
+                    {String((images?.image2 as Asset)?.fields?.title || "")}
                   </h3>
                 </div>
                 <Image
@@ -190,26 +146,28 @@ export default function Home() {
                 />
               </Link>
             </div>
-            <div className="flex flex-col items-center justify-center gap-8">
-              <span className="w-[32px] h-[100vh] bg-black"></span>
-              <span className="w-[47px] h-[47px] rounded-full bg-black "></span>
+            <div className="flex flex-col items-center justify-center gap-4 lg:gap-8">
+              <span className="w-[8px] lg:w-[32px] h-[40vh] lg:h-[100vh] bg-black"></span>
+              <span className="w-[20px] lg:w-[47px] h-[20px] lg:h-[47px] rounded-full bg-black "></span>
             </div>
-            <div className="flex flex-row items-center justify-center gap-8 absolute right-[-52vw] bottom-0">
-              <span className="w-[47px] h-[47px] rounded-full bg-black "></span>
-              <span className="w-[50vw] h-[32px] bg-black"></span>
+            <div className="flex flex-row items-center justify-center gap-4 lg:gap-8 absolute right-[-52vw] bottom-0">
+              <span className="w-[20px] lg:w-[47px] h-[20px] lg:h-[47px] rounded-full bg-black "></span>
+              <span className="w-[50vw] h-[8px] lg:h-[32px] bg-black"></span>
             </div>
           </div>
           <div className="w-[130vw] flex flex-row justify-between items-start ml-[30%]">
-            <span className="w-[32px] h-[150vh] bg-black"></span>
-            <div className="w-full h-full grid grid-cols-3 gap-8 px-10">
-              <Link 
-                href={String((images?.image3 as Asset)?.fields?.description || '/film')}
-                className="relative group col-span-2 overflow-hidden block"
+            <span className="hidden lg:block w-[8px] lg:w-[32px] h-[75vh] lg:h-[150vh] bg-black"></span>
+            <div className="w-full h-full grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8 px-4 lg:px-10">
+              <Link
+                href={String(
+                  (images?.image3 as Asset)?.fields?.description || "/film"
+                )}
+                className="relative group lg:col-span-2 overflow-hidden block"
               >
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500 ease-in-out z-10" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-600 ease-in-out z-20">
-                  <h3 className="text-white text-4xl font-bold text-center px-8 font-[family-name:var(--font-kay-pho-du)]">
-                    {String((images?.image3 as Asset)?.fields?.title || '')}
+                  <h3 className="text-white text-sm lg:text-4xl font-bold text-center px-3 lg:px-8 font-[family-name:var(--font-kay-pho-du)]">
+                    {String((images?.image3 as Asset)?.fields?.title || "")}
                   </h3>
                 </div>
                 <Image
@@ -220,29 +178,31 @@ export default function Home() {
                   className="w-full h-auto transition-transform duration-500 ease-in-out scale-[1.025] group-hover:scale-100"
                 />
               </Link>
-              <div className="flex items-center justify-center bg-black row-span-2 p-6">
-                <div className="-rotate-90 w-[calc(100vh*1.2)] text-center flex flex-col items-center justify-center ml-[-50%] gap-8">
-                  <p className="text-white mb-4 w-[calc(100vh*1.2)] text-center text-xl font-normal font-[family-name:var(--font-days-one)]">
+              <div className="hidden lg:flex items-center justify-center bg-black lg:row-span-2 p-3 lg:p-6">
+                <div className="-rotate-90 w-[calc(100vh*0.6)] sm:w-[calc(100vh*0.7)] md:w-[calc(100vh*0.8)] lg:w-[calc(100vh*0.5)] xl:w-[calc(100vh*1.2)] text-center flex flex-col items-center justify-center xl:ml-[-50%] lg:ml-[-25%] md:ml-[-25%] ml-[15%] gap-4 lg:gap-8 ">
+                  <p className="text-white mb-2 lg:mb-4 w-[calc(100vh*0.3)] sm:w-[calc(100vh*0.4)] md:w-[calc(100vh*0.6)] lg:w-[calc(100vh*0.8)] xl:w-[calc(100vh*1.2)] text-center text-[10px] lg:text-xl font-normal font-[family-name:var(--font-days-one)] text-xs">
                     [03] With work that emphasizes leaning into highly stylized
                     and aesthetic based film. As well as obsessing over the idea
                     of cohesiveness between each and every aspect of production.
                     From both shot to shot and department to department.
                   </p>
-                  <p className="text-white w-[calc(100vh*1.2)] text-center text-xl font-normal font-[family-name:var(--font-days-one)]">
+                  <p className="text-white w-[calc(100vh*0.3)] sm:w-[calc(100vh*0.4)] md:w-[calc(100vh*0.6)] lg:w-[calc(100vh*0.8)] xl:w-[calc(100vh*1.2)] text-center text-[10px] lg:text-xl font-normal font-[family-name:var(--font-days-one)] text-xs">
                     Creating a living, breathing, and tangible world that can
                     further accentuate the emotions of our own is always the end
                     goal.
                   </p>
                 </div>
               </div>
-              <Link 
-                href={String((images?.image4 as Asset)?.fields?.description || '/film')}
-                className="relative group col-span-2 overflow-hidden block"
+              <Link
+                href={String(
+                  (images?.image4 as Asset)?.fields?.description || "/film"
+                )}
+                className="relative group lg:col-span-2 overflow-hidden block"
               >
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-500 ease-in-out z-10" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-600 ease-in-out z-20">
-                  <h3 className="text-white text-4xl font-bold text-center px-8 font-[family-name:var(--font-kay-pho-du)]">
-                    {String((images?.image4 as Asset)?.fields?.title || '')}
+                  <h3 className="text-white text-sm lg:text-4xl font-bold text-center px-3 lg:px-8 font-[family-name:var(--font-kay-pho-du)]">
+                    {String((images?.image4 as Asset)?.fields?.title || "")}
                   </h3>
                 </div>
                 <Image
@@ -254,15 +214,15 @@ export default function Home() {
                 />
               </Link>
             </div>
-            <div className="flex flex-col items-center justify-center gap-8">
-              <span className="w-[32px] h-[100vh] bg-black"></span>
-              <span className="w-[47px] h-[47px] rounded-full bg-black"></span>
+            <div className="flex flex-col items-center justify-center gap-4 lg:gap-8">
+              <span className="w-[8px] lg:w-[32px] h-[50vh] lg:h-[100vh] bg-black"></span>
+              <span className="w-[20px] lg:w-[47px] h-[20px] lg:h-[47px] rounded-full bg-black"></span>
             </div>
           </div>
 
           {/* Copyright */}
-          <div className="w-full text-end py-6 items-end justify-end">
-            <p className="text-3xl font-bold font-[family-name:var(--font-kay-pho-du)]">
+          <div className="w-full text-end py-3 lg:py-6 items-end justify-end">
+            <p className="text-base lg:text-3xl font-bold font-[family-name:var(--font-kay-pho-du)]">
               Copyright © John Packer 2026
             </p>
           </div>

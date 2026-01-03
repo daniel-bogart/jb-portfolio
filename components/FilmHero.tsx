@@ -27,3 +27,4 @@ export default function FilmHero({ image, title }: FilmHeroProps) {
   );
 }
 
+
