@@ -13,7 +13,7 @@ export default function FilmGallery({ images }: FilmGalleryProps) {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6 mt-2 md:mt-12">
       {images.map((image, index) => {
         if (!image?.fields?.file?.url) return null;
         
@@ -32,5 +32,6 @@ export default function FilmGallery({ images }: FilmGalleryProps) {
     </div>
   );
 }
+
 
 

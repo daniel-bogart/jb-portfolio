@@ -14,7 +14,7 @@ export default function FilmHero({ image, title }: FilmHeroProps) {
   }
 
   return (
-    <div className="mb-12">
+    <div className="md:mb-12 mb-3">
       <Image
         src={`https:${image.fields.file.url}`}
         alt={title}
@@ -26,5 +26,6 @@ export default function FilmHero({ image, title }: FilmHeroProps) {
     </div>
   );
 }
+
 
 

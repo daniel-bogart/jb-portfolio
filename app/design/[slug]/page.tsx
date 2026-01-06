@@ -50,7 +50,7 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
         {/* Title */}
         <div className="mb-12">
           <div className="flex items-center gap-4 mb-4">
-            <div className="h-1 w-96 bg-black"></div>
+            <span className="h-[12px] md:h-1 w-full bg-black"></span>
           </div>
           <div className="flex items-center gap-4 mb-8">
             <h1 className="text-5xl font-mono font-normal">{fields.title}</h1>
@@ -60,7 +60,18 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
 
         {/* Description */}
         {fields.description && (
-          <p className="text-2xl mb-8 max-w-4xl">{fields.description}</p>
+          <p className="text-2xl mb-2 max-w-4xl underline">
+            {fields.description}
+          </p>
+        )}
+
+        {/* Article */}
+        {fields.article && (
+          <div className="max-w-4xl mb-12">
+            <div className="whitespace-pre-wrap font-[family-name:var(--font-kay-pho-du)] md:text-xl text-md font-bold leading-relaxed">
+              {fields.article}
+            </div>
+          </div>
         )}
 
         {/* Gallery - Masonry/Tetris style with original aspect ratios */}
@@ -68,10 +79,12 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6 mb-12">
             {fields.gallery.map((image, index) => {
               const asset = image as Asset;
-              const details = asset.fields.file?.details as { image?: { width?: number; height?: number } } | undefined;
+              const details = asset.fields.file?.details as
+                | { image?: { width?: number; height?: number } }
+                | undefined;
               const width = details?.image?.width || 800;
               const height = details?.image?.height || 600;
-              
+
               return (
                 <div key={index} className="mb-6 break-inside-avoid">
                   <Image
@@ -87,15 +100,6 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
                 </div>
               );
             })}
-          </div>
-        )}
-
-        {/* Article */}
-        {fields.article && (
-          <div className="max-w-4xl mb-12">
-            <div className="whitespace-pre-wrap font-[family-name:var(--font-kay-pho-du)] text-2xl font-bold leading-relaxed">
-              {fields.article}
-            </div>
           </div>
         )}
 

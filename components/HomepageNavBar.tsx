@@ -89,7 +89,7 @@ export default function HomepageNavBar() {
       </div>
       
         {/* Side text - scaled for mobile and desktop */}
-        <div className="w-[20%] lg:w-[40%] mt-[-30px] lg:mt-[-210px]  flex-shrink-0">
+        <div className="w-[20%] lg:w-[40%] mt-[-76px] lg:mt-[-210px]  flex-shrink-0">
           <div className="flex flex-col gap-4 lg:gap-10 rotate-270 px-4 lg:px-12 text-left w-[180px] lg:w-[500px] h-[250px] lg:h-[600px] pt-4 lg:pt-12">
             <p className="text-[10px] lg:text-2xl font-semibold font-[family-name:var(--font-days-one)]">
               [01] Production Designer & Director. Founding member of Raw Color
