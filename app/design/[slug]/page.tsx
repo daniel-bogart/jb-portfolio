@@ -6,6 +6,7 @@ import { getWebDesignBySlug } from '@/lib/contentful';
 import Image from 'next/image';
 import { Asset } from 'contentful';
 import { WebDesign, WebDesignFields } from '@/types/contentful';
+import Lightbox from '@/components/Lightbox';
 
 interface WebDesignProjectPageProps {
   params: Promise<{
@@ -17,6 +18,7 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
   const [project, setProject] = useState<WebDesign | null>(null);
   const [loading, setLoading] = useState(true);
   const [slug, setSlug] = useState<string>('');
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   
   useEffect(() => {
     params.then(({ slug: resolvedSlug }) => {
@@ -43,6 +45,15 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
   }
   
   const fields = project.fields as WebDesignFields;
+
+  // Prepare lightbox images
+  const lightboxImages = fields.gallery?.map((image, index) => {
+    const asset = image as Asset;
+    return {
+      url: `https:${asset.fields.file?.url}`,
+      alt: String(asset.fields.title || `Gallery image ${index + 1}`)
+    };
+  }) || [];
 
   return (
     <main className="min-h-screen pt-32 px-6 bg-[#E8E2D5]">
@@ -84,14 +95,18 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
                 | undefined;
               const width = details?.image?.width || 800;
               const height = details?.image?.height || 600;
+              const imageUrl = `https:${asset.fields.file?.url}`;
+              const imageAlt = String(asset.fields.title || `Gallery image ${index + 1}`);
 
               return (
-                <div key={index} className="mb-6 break-inside-avoid">
+                <div 
+                  key={index} 
+                  className="mb-6 break-inside-avoid cursor-pointer hover:opacity-90 transition-opacity duration-300"
+                  onClick={() => setLightboxIndex(index)}
+                >
                   <Image
-                    src={`https:${asset.fields.file?.url}`}
-                    alt={String(
-                      asset.fields.title || `Gallery image ${index + 1}`
-                    )}
+                    src={imageUrl}
+                    alt={imageAlt}
                     width={width}
                     height={height}
                     className="w-full h-auto"
@@ -110,6 +125,14 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
           </p>
         </footer>
       </div>
+      
+      {lightboxIndex !== null && (
+        <Lightbox
+          images={lightboxImages}
+          initialIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+        />
+      )}
     </main>
   );
 }
