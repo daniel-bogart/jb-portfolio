@@ -20,7 +20,7 @@ export default function FilmGallery({ images }: FilmGalleryProps) {
   const lightboxImages = images
     .filter(img => img?.fields?.file?.url)
     .map((image, index) => ({
-      url: `https:${image.fields.file.url}`,
+      url: `https:${image.fields.file?.url}`,
       alt: `Gallery image ${index + 1}`
     }));
 
