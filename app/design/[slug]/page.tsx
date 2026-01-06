@@ -6,6 +6,7 @@ import { getWebDesignBySlug } from '@/lib/contentful';
 import Image from 'next/image';
 import { Asset } from 'contentful';
 import { WebDesign, WebDesignFields } from '@/types/contentful';
+import Lightbox from '@/components/Lightbox';
 
 interface WebDesignProjectPageProps {
   params: Promise<{
@@ -17,6 +18,7 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
   const [project, setProject] = useState<WebDesign | null>(null);
   const [loading, setLoading] = useState(true);
   const [slug, setSlug] = useState<string>('');
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   
   useEffect(() => {
     params.then(({ slug: resolvedSlug }) => {
@@ -44,13 +46,22 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
   
   const fields = project.fields as WebDesignFields;
 
+  // Prepare lightbox images
+  const lightboxImages = fields.gallery?.map((image, index) => {
+    const asset = image as Asset;
+    return {
+      url: `https:${asset.fields.file?.url}`,
+      alt: String(asset.fields.title || `Gallery image ${index + 1}`)
+    };
+  }) || [];
+
   return (
     <main className="min-h-screen pt-32 px-6 bg-[#E8E2D5]">
       <div className="max-w-7xl mx-auto">
         {/* Title */}
         <div className="mb-12">
           <div className="flex items-center gap-4 mb-4">
-            <div className="h-1 w-96 bg-black"></div>
+            <span className="h-[12px] md:h-1 w-full bg-black"></span>
           </div>
           <div className="flex items-center gap-4 mb-8">
             <h1 className="text-5xl font-mono font-normal">{fields.title}</h1>
@@ -60,7 +71,18 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
 
         {/* Description */}
         {fields.description && (
-          <p className="text-2xl mb-8 max-w-4xl">{fields.description}</p>
+          <p className="text-2xl mb-2 max-w-4xl underline">
+            {fields.description}
+          </p>
+        )}
+
+        {/* Article */}
+        {fields.article && (
+          <div className="max-w-4xl mb-12">
+            <div className="whitespace-pre-wrap font-[family-name:var(--font-kay-pho-du)] md:text-xl text-md font-bold leading-relaxed">
+              {fields.article}
+            </div>
+          </div>
         )}
 
         {/* Gallery - Masonry/Tetris style with original aspect ratios */}
@@ -68,17 +90,23 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6 mb-12">
             {fields.gallery.map((image, index) => {
               const asset = image as Asset;
-              const details = asset.fields.file?.details as { image?: { width?: number; height?: number } } | undefined;
+              const details = asset.fields.file?.details as
+                | { image?: { width?: number; height?: number } }
+                | undefined;
               const width = details?.image?.width || 800;
               const height = details?.image?.height || 600;
-              
+              const imageUrl = `https:${asset.fields.file?.url}`;
+              const imageAlt = String(asset.fields.title || `Gallery image ${index + 1}`);
+
               return (
-                <div key={index} className="mb-6 break-inside-avoid">
+                <div 
+                  key={index} 
+                  className="mb-6 break-inside-avoid cursor-pointer hover:opacity-90 transition-opacity duration-300"
+                  onClick={() => setLightboxIndex(index)}
+                >
                   <Image
-                    src={`https:${asset.fields.file?.url}`}
-                    alt={String(
-                      asset.fields.title || `Gallery image ${index + 1}`
-                    )}
+                    src={imageUrl}
+                    alt={imageAlt}
                     width={width}
                     height={height}
                     className="w-full h-auto"
@@ -90,15 +118,6 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
           </div>
         )}
 
-        {/* Article */}
-        {fields.article && (
-          <div className="max-w-4xl mb-12">
-            <div className="whitespace-pre-wrap font-[family-name:var(--font-kay-pho-du)] text-2xl font-bold leading-relaxed">
-              {fields.article}
-            </div>
-          </div>
-        )}
-
         {/* Footer */}
         <footer className="mt-24 text-center py-8 border-t border-black">
           <p className="text-sm font-[family-name:var(--font-kay-pho-du)]">
@@ -106,6 +125,14 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
           </p>
         </footer>
       </div>
+      
+      {lightboxIndex !== null && (
+        <Lightbox
+          images={lightboxImages}
+          initialIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+        />
+      )}
     </main>
   );
 }

@@ -63,6 +63,15 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
           <p className="text-2xl mb-8 max-w-4xl">{fields.description}</p>
         )}
 
+        {/* Article */}
+        {fields.article && (
+          <div className="max-w-4xl mb-12">
+            <div className="whitespace-pre-wrap font-[family-name:var(--font-kay-pho-du)] text-2xl font-bold leading-relaxed">
+              {fields.article}
+            </div>
+          </div>
+        )}
+
         {/* Gallery */}
         {fields.gallery && fields.gallery.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -82,15 +91,6 @@ export default function WebDesignProjectPage({ params }: WebDesignProjectPagePro
                 </div>
               );
             })}
-          </div>
-        )}
-
-        {/* Article */}
-        {fields.article && (
-          <div className="max-w-4xl mb-12">
-            <div className="whitespace-pre-wrap font-[family-name:var(--font-kay-pho-du)] text-2xl font-bold leading-relaxed">
-              {fields.article}
-            </div>
           </div>
         )}
 

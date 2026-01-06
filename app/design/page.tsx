@@ -32,9 +32,9 @@ export default function WebDesignPage() {
     <main className="min-h-screen pt-32 px-6 bg-[#E8E2D5]">
       <div className="max-w-7xl mx-auto">
         {/* Title with decorative elements */}
-        <div className="mb-16">
+        <div className="md:mb-16 mb-8">
           <div className="flex items-center gap-4 mb-4">
-            <div className="h-1 w-96 bg-black"></div>
+            <span className="h-[12px] md:h-1 w-96 bg-black"></span>
           </div>
           <div className="flex items-center gap-4">
             <h1 className="text-5xl font-mono font-normal">Web-Design</h1>

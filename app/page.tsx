@@ -179,15 +179,15 @@ export default function Home() {
                 />
               </Link>
               <div className="hidden lg:flex items-center justify-center bg-black lg:row-span-2 p-3 lg:p-6">
-                <div className="-rotate-90 w-[calc(100vh*0.6)] sm:w-[calc(100vh*0.7)] md:w-[calc(100vh*0.8)] lg:w-[calc(100vh*0.5)] xl:w-[calc(100vh*1.2)] text-center flex flex-col items-center justify-center xl:ml-[-50%] lg:ml-[-25%] md:ml-[-25%] ml-[15%] gap-4 lg:gap-8 ">
-                  <p className="text-white mb-2 lg:mb-4 w-[calc(100vh*0.3)] sm:w-[calc(100vh*0.4)] md:w-[calc(100vh*0.6)] lg:w-[calc(100vh*0.8)] xl:w-[calc(100vh*1.2)] text-center text-[10px] lg:text-xl font-normal font-[family-name:var(--font-days-one)] text-xs">
+                <div className="-rotate-90 w-[calc(100vh*0.6)] sm:w-[calc(100vh*0.7)] md:w-[calc(100vh*0.8)] lg:w-[calc(100vh*0.5)] xl:w-[calc(100vh*1.2)] text-left flex flex-col items-center justify-center xl:ml-[-50%] lg:ml-[-25%] md:ml-[-25%] ml-[15%] gap-4 lg:gap-8 ">
+                  <p className="text-white mb-2 lg:mb-4 w-[calc(100vh*0.3)] sm:w-[calc(100vh*0.4)] md:w-[calc(100vh*0.6)] lg:w-[calc(100vh*0.8)] xl:w-[calc(100vh*1.2)] text-left text-[10px] lg:text-xl font-normal font-[family-name:var(--font-days-one)] text-xs">
                     [03] With work that emphasizes leaning into highly stylized
                     and aesthetic based film. As well as obsessing over the idea
                     of cohesiveness between each and every aspect of production.
                     From both shot to shot and department to department.
                   </p>
-                  <p className="text-white w-[calc(100vh*0.3)] sm:w-[calc(100vh*0.4)] md:w-[calc(100vh*0.6)] lg:w-[calc(100vh*0.8)] xl:w-[calc(100vh*1.2)] text-center text-[10px] lg:text-xl font-normal font-[family-name:var(--font-days-one)] text-xs">
-                    Creating a living, breathing, and tangible world that can
+                  <p className="text-white w-[calc(100vh*0.3)] sm:w-[calc(100vh*0.4)] md:w-[calc(100vh*0.6)] lg:w-[calc(100vh*0.8)] xl:w-[calc(100vh*1.2)] text-left text-[10px] lg:text-xl font-normal font-[family-name:var(--font-days-one)] text-xs">
+                    [04] Creating a living, breathing, and tangible world that can
                     further accentuate the emotions of our own is always the end
                     goal.
                   </p>
